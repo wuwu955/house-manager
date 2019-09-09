@@ -4,17 +4,42 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--添加SpringBoot parent支持-->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.0.RELEASE</version>
-    </parent>
-
-    <groupId>com.huhu.dubbo</groupId>
-    <artifactId>huhu-dubbo</artifactId>
-    <packaging>pom</packaging>
+    <groupId>com.huhu.house</groupId>
+      <artifactId>huhu-house</artifactId>
+      <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
+        <zk.version>0.1</zk.version>
+        <dubbo.version>2.7.3</dubbo.version>
+    </properties>
+
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Apache Dubbo  -->
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-bom</artifactId>
+                <version>${dubbo.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
     <modules>
         <module>huhu-dubbo-service</module>
         <module>huhu-dubbo-consumer</module>
@@ -30,18 +55,16 @@
 
         <!--添加dubbo的springboot依赖-->
         <dependency>
-            <groupId>com.alibaba.boot</groupId>
+            <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>0.2.0</version>
+            <version>${dubbo.version}</version>
         </dependency>
 
-        <!--添加dubbo依赖-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>2.6.4</version>
-        </dependency>
-
+        <!--<dependency>-->
+            <!--<groupId>com.github.sgroschupf</groupId>-->
+            <!--<artifactId>zkclient</artifactId>-->
+            <!--<version>${zk.version}</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>

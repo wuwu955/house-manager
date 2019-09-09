@@ -2,7 +2,7 @@ package com.huhu.dubbo;
 
 import com.huhu.dubbo.pojo.User;
 import com.huhu.dubbo.service.UserService;
-import com.alibaba.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotation.Reference;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
